@@ -46,11 +46,38 @@ const STOP_WORDS = new Set([
   "and",
   "another",
   "get",
+  "he",
+  "her",
+  "hers",
+  "him",
+  "his",
+  "i",
+  "it",
+  "its",
   "make",
+  "me",
+  "mine",
+  "my",
   "of",
   "on",
+  "one",
+  "our",
+  "ours",
+  "she",
+  "somebody",
+  "someone",
   "the",
+  "their",
+  "theirs",
+  "them",
+  "they",
   "to",
+  "us",
+  "we",
+  "you",
+  "your",
+  "yours",
+  "yourself",
 ]);
 
 function normalizeAnswer(value: string) {
@@ -990,7 +1017,7 @@ export default function Home() {
               <span>BOARD &amp; SOUND</span>
               <button
                 onClick={() => setRevealed(round.answers.map((_, index) => index))}
-                disabled={phase !== "complete" || roundAwarded}
+                disabled={phase !== "complete" || revealed.length === round.answers.length}
               >
                 REVEAL ALL
               </button>
@@ -1039,7 +1066,7 @@ export default function Home() {
         <div className="winner-banner" role="status">
           <span aria-hidden="true">WIN</span>
           <div>
-            <small>WORK-FEUD CHAMPIONS</small>
+            <small>{category.name.toUpperCase()} CHAMPIONS</small>
             <strong>{teams[0].score >= teams[1].score ? teams[0].name : teams[1].name}</strong>
           </div>
         </div>
